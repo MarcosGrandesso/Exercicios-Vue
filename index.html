@@ -25,14 +25,14 @@
           <li class="course-item ma-3">
             <div class="course">
               <div class="course-image">
-                <img src="./images/dejavu_matrix.jpg" alt="" />
+                <img v-bind:src=" image " alt="" />
               </div>
               <div class="course-info">
                 <h2 class="title mb-2">{{ course }}</h2>
                 <p class="description">
-                  Como construir aplicações web com agilidade e qualidade.
+                  {{ description }}
                 </p>
-                <p>42 horas</p>
+                <p>{{ duration }}</p>
               </div>
             </div>
           </li>
@@ -45,7 +45,10 @@
       var app = new Vue({
         el: "#app",
         data: {
+          description: 'teste',
           course: "D-Já Vue - Uma jornada pela Web",
+          image: "./images/dejavu_matrix.jpg",
+          duration: 42 + ' horas',
         },
       });
     </script>

@@ -22,7 +22,7 @@
 
       <section class="course-list">
         <ul>
-          <li class="course-item ma-3">
+          <!-- <li class="course-item ma-3">
             <div class="course">
               <div class="course-image">
                 <img :src="image" alt="" />
@@ -48,11 +48,11 @@
             </div>
           </li>
 
-          <!--
+        
             Como evitar a repetição do <li> de cursos?
-          -->
+          
 
-          <!-- Curso 2 -->
+           Curso 2 
           <li class="course-item ma-3">
             <div class="course">
               <div class="course-image">
@@ -74,28 +74,33 @@
                 </div>
               </div>
             </div>
-          </li>
+          </li> -->
 
           <!-- Curso 3 -->
-          <li class="course-item ma-3">
+          <li class="course-item ma-3" v-for="curso in courses">
             <div class="course">
               <div class="course-image">
-                <img src="./images/logo-linux960x430.jpg" alt="" />
+                <img :src="curso.image" alt="" />
               </div>
               <div class="course-info">
-                <h2 class="title mb-2">Linux - Entendendo a tela preta!</h2>
+                <h2 class="title mb-2">{{ curso.course }} <span class="badge light" v-if="!curso.active">Em breve</span>
+                </h2>
+                
                 <p class="description">
-                  Entendendo Git através dos primeiros comandos via linha de
-                  comando.
+                 {{ curso.description }}
                 </p>
                 <div class="course-actions pa-1">
-                  <p class="badge keep-left bold">FREE</p>
-                  <span>21 horas</span>
+                  <p class="badge keep-left bold" v-show="curso.price ==0">FREE</p>
+                  <p class="badge keep-left bold" v-show="curso.price !=0">{{curso.price}} R$</p>
+                  <span>{{curso.duration}} horas</span>
                   <button class="btn btn-primary">Iniciar</button>
                 </div>
               </div>
             </div>
           </li>
+
+
+
         </ul>
       </section>
     </div>

@@ -34,8 +34,8 @@
                 </h2>
                 <p class="description">{{ description }}</p>
                 <div class="course-actions pa-1">
-                  <p class="badge keep-left bold">FREE</p>
-                  <p class="badge keep-left bold">R$ {{ valor }}</p>
+                  <p class="badge keep-left bold" v-show='valor == 0'>FREE</p>
+                  <p class="badge keep-left bold" v-show='valor > 0'>R$ {{ valor }}</p>
                   <span>{{ duration }} horas</span>
                   <button class="btn btn-primary" v-if="ativo">Iniciar</button>
                   <button class="btn" :disabled="!ativo" v-else>Iniciar</button>

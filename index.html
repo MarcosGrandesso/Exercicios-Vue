@@ -62,7 +62,8 @@
                   <p
                     v-else-if="course.id == 1"
                     class="badge keep-left bold"
-                    :style="{'background-color': item.color1}"
+                    :style="{'background-color': course.price < 150 ? item.color2 : item.color1}"
+                                                              
                   >
                     R$ {{ course.price }}
                   </p>

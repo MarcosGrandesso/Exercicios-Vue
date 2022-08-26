@@ -1,6 +1,9 @@
 var app = new Vue({
   el: "#app",
   data: {
+    contador : 0,
+    carrinho : [],
+    learning : [],
     shoppingList: [],
     studyingList: [],
     courses: [
@@ -12,6 +15,8 @@ var app = new Vue({
         duration: 42,
         active: true,
         price: 100,
+        comprado: false,
+        inLearn:false,
       },
       {
         id: 2,
@@ -22,6 +27,8 @@ var app = new Vue({
         duration: 21,
         active: false,
         price: 900,
+        comprado:false,
+        inLearn:false,
       },
       {
         id: 3,
@@ -32,7 +39,30 @@ var app = new Vue({
         duration: 21,
         active: true,
         price: 0,
+        comprado:true,
+        inLearn:true,
+        
       },
     ],
   },
+
+  methods: {
+    // comprarCurso() {
+    // lista = []
+    // app.courses.forEach(function(curso) {lista.push(curso)})
+    // while (lista.length > app.carrinho) {
+    //   console.log(lista)
+    //   app.carrinho = app.carrinho + 1
+    //   break
+    // }
+    // }
+
+    adicionarCurso(course) {
+      lista = []
+      if (course.price > 0) {
+        app.carrinho.push(course)
+      } else { app.learning.push(course)}
+    }
+  }
+  
 });

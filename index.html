@@ -22,9 +22,9 @@
         <h1 class="title center ma-3">VueJS - Top Cursos</h1>
         <div class="cart">
           <i class="fa-solid fa-cart-shopping"></i>
-          <span class="cart-counter buy">0</span>
+          <span class="cart-counter buy"> {{ carrinho.length }} </span>
           <i class="fa-solid fa-graduation-cap ml-2"></i>
-          <span class="cart-counter study">0</span>
+          <span class="cart-counter study">{{ learning.length }}</span>
         </div>
       </section>
       <section class="banner">
@@ -63,6 +63,7 @@
                   <button
                     :class="{btn: true, 'btn-primary': course.active}"
                     :disabled="!course.active"
+                    @click="adicionarCurso(course)"
                   >
                     {{ course.price > 0 ? 'Comprar Curso' : 'Iniciar Curso'}}
                   </button>

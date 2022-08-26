@@ -1,6 +1,9 @@
 var app = new Vue({
   el: "#app",
   data: {
+    notaFinal : 0,
+    sumMediaCurso : 0,
+    mediaCurso: [],
     shoppingList: [],
     studyingList: [],
     courses: [
@@ -19,6 +22,7 @@ var app = new Vue({
         showReview: false,
         reviews: [],
         rating: null,
+        media: 0,
       },
       {
         id: 2,
@@ -32,6 +36,8 @@ var app = new Vue({
         message: "👈 Melhor cursp do mercado",
         showReview: false,
         reviews: [],
+        rating: null,
+        media: 0,
       },
       {
         id: 3,
@@ -44,6 +50,8 @@ var app = new Vue({
         price: 0,
         showReview: false,
         reviews: [],
+        rating: null,
+        media: 0,
       },
     ],
     theme: {
@@ -65,9 +73,18 @@ var app = new Vue({
     toggleReview(index) {
       this.courses[index].showReview = !this.courses[index].showReview;
     },
-    sendRewiew() {
-      console.log("chegue aqui no sendRewiew");
-      // Desafios:
+    sendRewiew(id) {
+      app.courses[id-1].reviews.push(app.courses[id-1].rating)
+      app.courses[id-1].media = 0
+
+      for (elemento of app.courses[id-1].reviews) {
+        
+        app.courses[id-1].media = app.courses[id-1].media + Number(elemento)
+      }
+      app.courses[id-1].media =  app.courses[id-1].media /  app.courses[id-1].reviews.length
+
+      console.log(app.courses[id-1].media)
+
       // Como pegar o curso correspondente a este review?
       // Como adicionar a nota ao course.reviews correspondente?
     },

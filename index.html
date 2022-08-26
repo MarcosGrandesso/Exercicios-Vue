@@ -72,11 +72,11 @@
                 -->
                 <p>
                   <i class="fa-solid fa-face-grin-stars"></i>
-                  <span class="rating bold ml-2">4.2</span>
+                  <span class="rating bold ml-2">{{ course.media }}</span>
                 </p>
                 <p><a href="#" @click.prevent="toggleReview(index)">Dar nota para o curso ({{ course.reviews.length }})</a></p>
                 <div v-show="course.showReview">
-                  <form @submit.prevent="sendRewiew">
+                  <form @submit.prevent="sendRewiew(course.id)">
                     <p>
                       <label for="rating">Nota:</label>
                       <select id="rating" name="rating" v-model.number="course.rating">

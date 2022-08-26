@@ -1,6 +1,10 @@
 var app = new Vue({
   el: "#app",
   data: {
+    item : {
+      'color1' : 'red',
+      'color2' : 'gray',
+    },
     shoppingList: [],
     studyingList: [],
     courses: [

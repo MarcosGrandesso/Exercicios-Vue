@@ -85,9 +85,13 @@
 
                 <div v-show="true">
                   <form @submit.prevent="sendRewiew(index)">
-                    <p>
+                    <p class="flexx">
+                      <label for="name" >nome:</label>
+                      <input type="text" v-model.string="revisao.nome">
+                      <label for="review">review:</label>
+                      <input type="text" v-model.string="revisao.review">
                       <label for="rating">Nota:</label>
-                      <select id="rating" name="rating" v-model.number="course.rating">
+                      <select id="rating" name="rating" v-model.number="course.rating" v-model.number="revisao.review">
                         <option></option>
                         <option>5</option>
                         <option>4</option>

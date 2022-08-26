@@ -22,6 +22,12 @@ select {
   line-height: 1.75em;
 }
 
+.flexx {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
 .text-error {
   color: #c21616;
 }

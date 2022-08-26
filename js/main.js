@@ -1,6 +1,11 @@
 var app = new Vue({
   el: "#app",
   data: {
+    revisao: {
+      nome : null,
+      review : null,
+      nota : null
+    },
     shoppingList: [],
     studyingList: [],
     tabs: ["Notas", "Dar uma nota"],

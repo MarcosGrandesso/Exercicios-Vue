@@ -3,7 +3,7 @@ var app = new Vue({
   data: {
     item : {
       'color1' : 'red',
-      'color2' : 'gray',
+      'color2' : 'purple',
     },
     shoppingList: [],
     studyingList: [],

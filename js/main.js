@@ -78,6 +78,8 @@ var app = new Vue({
         targetList = this.studyingList;
       }
       targetList.push(course);
+      
+      this.showToast(`${course.course}  foi adicionado a sua lista`)
     },
     selectTab(courseIndex, tab) {
       this.courses[courseIndex].selectedTab = tab;
@@ -113,7 +115,7 @@ var app = new Vue({
       course.selectedTab = undefined;
 
       this.showToast(
-        "Sua reivão foi enviada! Muito obrigado pela contribuição"
+        "Sua revisao foi enviada! Muito obrigado pela consideracion"
       );
     },
     calcRating(courseIndex) {

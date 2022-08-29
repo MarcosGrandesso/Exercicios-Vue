@@ -4,8 +4,10 @@ var app = new Vue({
     revisao: {
       nome : null,
       review : null,
-      nota : null
+      nota : null,
+      ativo : false,
     },
+    errors: [],
     shoppingList: [],
     studyingList: [],
     tabs: ["Notas", "Dar uma nota"],
@@ -88,9 +90,20 @@ var app = new Vue({
       - limpe os campos
       **/
       if (!course.rating) {
-        alert("Selecione um nota antes de enviar!");
+        this.errors.push('Vocẽ Precisa dar uma nota amigo !!!')
         return;
       }
+
+      if (!this.revisao.review) {
+        this.errors.push("De um review detalhado");
+        return;
+      }
+
+      else if (!this.revisao.nome) {
+        this.errors.push("Diga o seu nome no review");
+        return;
+      }
+
       let newReview = {
         date: new Date().toISOString(),
         rating: course.rating,
@@ -100,6 +113,7 @@ var app = new Vue({
       course.showReview = false;
     },
     calcRating(courseIndex) {
+      this.errors = []
       let reviews = this.courses[courseIndex].reviews;
       let total = 0;
       if (!reviews || reviews.length == 0) {
@@ -122,5 +136,8 @@ var app = new Vue({
       }
       return message;
     },
+    revisao() {
+      console.log('revisao ta onnn')
+    }
   },
 });

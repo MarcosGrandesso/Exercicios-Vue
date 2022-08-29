@@ -58,6 +58,7 @@ var app = new Vue({
     // }
 
     adicionarCurso(course) {
+      console.log(course)
       lista = []
       if (course.price > 0) {
         app.carrinho.push(course)

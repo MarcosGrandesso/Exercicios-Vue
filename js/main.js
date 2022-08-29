@@ -89,20 +89,24 @@ var app = new Vue({
       - Adicione também os campos nome (name) e uma descrição (review)
       - limpe os campos
       **/
-      if (!course.rating) {
-        this.errors.push('Vocẽ Precisa dar uma nota amigo !!!')
-        return;
-      }
+     if (!this.revisao.nome || !this.revisao.review || !course.rating) {
 
-      if (!this.revisao.review) {
-        this.errors.push("De um review detalhado");
-        return;
-      }
+          if (!this.revisao.nome) {
+            this.errors.push("Diga o seu nome no review");
+          }
+          if (!this.revisao.review) {
+            this.errors.push("De um review detalhado");
+          }
+          if (!course.rating) {
+            this.errors.push('Vocẽ Precisa dar uma nota amigo !!!')
+          }
+          return
+     }
 
-      else if (!this.revisao.nome) {
-        this.errors.push("Diga o seu nome no review");
-        return;
-      }
+     this.errors = []
+
+
+
 
       let newReview = {
         date: new Date().toISOString(),
@@ -136,8 +140,5 @@ var app = new Vue({
       }
       return message;
     },
-    revisao() {
-      console.log('revisao ta onnn')
-    }
   },
 });

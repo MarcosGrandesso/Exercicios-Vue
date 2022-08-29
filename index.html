@@ -87,11 +87,11 @@
                   <form @submit.prevent="sendRewiew(index)">
                     <p class="flexx">
                       <label for="name" >nome:</label>
-                      <input type="text" v-model.string="revisao.nome">
+                      <input type="text" v-model.string="course.revisao.nome">
                       <label for="review">review:</label>
-                      <input type="text" v-model.string="revisao.review">
+                      <input type="text" v-model.string="course.revisao.review">
                       <label for="rating">Nota:</label>
-                      <select id="rating" name="rating" v-model.number="course.rating" v-model.number="revisao.review">
+                      <select id="rating" name="rating" v-model.number="course.rating" v-model.number="course.revisao.review">
                         <option></option>
                         <option>5</option>
                         <option>4</option>
@@ -103,9 +103,8 @@
                     <p>
                       <input type="submit" value="Enviar" class="btn btn-sm">
                     </p>
-                      <p v-for="erro in errors">
+                      <p v-for="erro in course.errors">
                         {{ erro }}
-
                       </p>
                 </div>
 

@@ -1,13 +1,6 @@
 var app = new Vue({
   el: "#app",
   data: {
-    revisao: {
-      nome : null,
-      review : null,
-      nota : null,
-      ativo : false,
-    },
-    errors: [],
     shoppingList: [],
     studyingList: [],
     tabs: ["Notas", "Dar uma nota"],
@@ -21,8 +14,15 @@ var app = new Vue({
         active: true,
         price: 100,
         message: "👉 50% Desconto! Últimos dias",
+        revisao: {
+          nome : null,
+          review : null,
+          nota : null,
+          ativo : false,
+        },
         style: {
           priceColor: "#ffc31c",
+          
         },
         showReview: false,
         reviews: [],
@@ -44,6 +44,12 @@ var app = new Vue({
         reviews: [],
         errors: [],
         selectedTab: null,
+        revisao: {
+          nome : null,
+          review : null,
+          nota : null,
+          ativo : false,
+        },
       },
       {
         id: 3,
@@ -58,6 +64,12 @@ var app = new Vue({
         reviews: [],
         errors: [],
         selectedTab: null,
+        revisao: {
+          nome : null,
+          review : null,
+          nota : null,
+          ativo : false,
+        },
       },
     ],
     theme: {
@@ -89,32 +101,33 @@ var app = new Vue({
       - Adicione também os campos nome (name) e uma descrição (review)
       - limpe os campos
       **/
-     if (!this.revisao.nome || !this.revisao.review || !course.rating) {
+     course.errors = []
+     if (!course.revisao.nome || !course.revisao.review || !course.rating) {
 
-          if (!this.revisao.nome) {
-            this.errors.push("Diga o seu nome no review");
+          if (!course.revisao.nome) {
+            course.errors.push("Diga o seu nome no review");
           }
-          if (!this.revisao.review) {
-            this.errors.push("De um review detalhado");
+          if (!course.revisao.review) {
+            course.errors.push("De um review detalhado");
           }
           if (!course.rating) {
-            this.errors.push('Vocẽ Precisa dar uma nota amigo !!!')
+            course.errors.push('Vocẽ Precisa dar uma nota amigo !!!')
           }
           return
-     }
 
-     this.errors = []
+        } else {
+            let newReview = {
+              date: new Date().toISOString(),
+              rating: course.rating,
+              nome : course.revisao.nome,
+              review : course.revisao.review
+            };
+            course.reviews.push(newReview);
+            course.rating = undefined;
+            course.showReview = false;
+        }
 
 
-
-
-      let newReview = {
-        date: new Date().toISOString(),
-        rating: course.rating,
-      };
-      course.reviews.push(newReview);
-      course.rating = undefined;
-      course.showReview = false;
     },
     calcRating(courseIndex) {
       this.errors = []

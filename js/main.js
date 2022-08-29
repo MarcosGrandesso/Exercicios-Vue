@@ -74,14 +74,14 @@ var app = new Vue({
       this.courses[index].showReview = !this.courses[index].showReview;
     },
     sendRewiew(id) {
-      app.courses[id-1].reviews.push(app.courses[id-1].rating)
-      app.courses[id-1].media = 0
+      this.courses[id-1].reviews.push(this.courses[id-1].rating)
+      this.courses[id-1].media = 0
 
-      for (elemento of app.courses[id-1].reviews) {
+      for (elemento of this.courses[id-1].reviews) {
         
-        app.courses[id-1].media = app.courses[id-1].media + Number(elemento)
+        this.courses[id-1].media = this.courses[id-1].media + Number(elemento)
       }
-      app.courses[id-1].media =  app.courses[id-1].media /  app.courses[id-1].reviews.length
+      this.courses[id-1].media =  this.courses[id-1].media /  this.courses[id-1].reviews.length
 
       console.log(app.courses[id-1].media)
 

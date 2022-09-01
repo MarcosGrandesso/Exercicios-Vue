@@ -1,5 +1,9 @@
 var app = new Vue({
   el: "#app",
+  components : {
+    'alerta': httpVueLoader('./components/alerta.vue'),
+    'review': httpVueLoader('./components/review.vue'),
+  },
   data: {
     shoppingList: [],
     studyingList: [],
@@ -14,6 +18,8 @@ var app = new Vue({
         hide: false,
       },
     },
+    msgAlerta: 'texto teste'
+    ,
     courses: [
       {
         id: 1,
